@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import Button from 'antd/lib/button';
 import './App.css';
+import Sketch from '../src/components/Layout/Sketch';
+import TabsContainer from '../src/components/TabsContainer';
+import { Menu } from './components/Menu';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button type="primary">Button</Button>
+        <Sketch sider={<Menu />} content={<TabsContainer />} />
       </div>
     );
   }
