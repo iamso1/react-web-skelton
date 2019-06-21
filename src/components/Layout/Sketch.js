@@ -15,7 +15,9 @@ export default class Sketch extends Component {
           <FlexWrap id="sider" flex={'0'}>
             {this.props.sider}
           </FlexWrap>
-          <FlexWrap id="content">{this.props.content}</FlexWrap>
+          <FlexContainer id="content" flex={'1'}>
+            {this.props.content}
+          </FlexContainer>
         </FlexContainer>
       </FlexContainer>
     );

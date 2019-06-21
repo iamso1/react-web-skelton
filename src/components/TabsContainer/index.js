@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Tabs, Button } from 'antd';
+import { Tabs } from 'antd';
+import Test from '../Test';
+import { FlexContainer, FlexWrap } from '../../styledComponents/CommonWrap';
 
 const { TabPane } = Tabs;
 
@@ -8,8 +10,9 @@ export default class TabsContainer extends Component {
     super(props);
     this.newTabIndex = 0;
     const panes = [
-      { title: 'Tab 1', content: 'Content of Tab Pane 1', key: '1' },
-      { title: 'Tab 2', content: 'Content of Tab Pane 2', key: '2' },
+      { title: 'Tab 1', content: <Test />, key: '1' },
+      { title: 'Tab 2', content: 'Content of Tab Pane 1', key: '2' },
+      { title: 'Tab 3', content: 'Content of Tab Pane 1', key: '3' },
     ];
     this.state = {
       activeKey: panes[0].key,
@@ -53,24 +56,20 @@ export default class TabsContainer extends Component {
 
   render() {
     return (
-      <div id="tabsContainer">
-        {/* <div style={{ marginBottom: 16 }}>
-          <Button onClick={this.add}>ADD</Button>
-        </div> */}
-        <Tabs
-          hideAdd
-          onChange={this.onChange}
-          activeKey={this.state.activeKey}
-          type="editable-card"
-          onEdit={this.onEdit}
-        >
-          {this.state.panes.map(pane => (
-            <TabPane tab={pane.title} key={pane.key}>
-              {pane.content}
-            </TabPane>
-          ))}
-        </Tabs>
-      </div>
+      <Tabs
+        hideAdd
+        onChange={this.onChange}
+        activeKey={this.state.activeKey}
+        type="editable-card"
+        onEdit={this.onEdit}
+      >
+        {/* style={{ overflowY: 'auto' }} */}
+        {this.state.panes.map(pane => (
+          <TabPane id="pane" tab={pane.title} key={pane.key}>
+            {pane.content}
+          </TabPane>
+        ))}
+      </Tabs>
     );
   }
 }
